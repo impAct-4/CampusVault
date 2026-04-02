@@ -1,0 +1,269 @@
+generator client {
+  provider = "prisma-client"
+}
+
+datasource db {`n  provider = "sqlite"`n}
+
+// Student Model
+model Student {
+  id            String    @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String    @unique
+  phone         String    @unique
+  password      String
+  college       String
+  branch        String
+  cgpa          Float
+  profileImage  String?
+  bio           String?
+  resumeUrl     String?
+  skillCategory String?   @default("Beginner")
+  creditBalance Int       @default(100)
+  hasCompletedAssessment Boolean @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  mentorshipSessions MentorshipSession[]
+  applications       PlacementApplication[]
+  marketAnalytics    MarketAnalytics?
+  companyPrepSessions CompanyPrepSession[]
+  questions          Question[] @relation("QuestionAuthor")
+  purchasedQuestions QuestionPurchase[] @relation("BuyerPurchases")
+
+  @@index([email])
+  @@index([college])
+  @@index([branch])
+}
+
+// Mentor Model
+model Mentor {
+  id            String    @id @default(cuid())
+  firstName     String
+  lastName      String
+  email         String    @unique
+  phone         String
+  password      String
+  expertise     String[]
+  company       String
+  designation   String
+  experience    Int
+  bio           String?
+  profileImage  String?
+  hourlyRate    Float?
+  isVerified    Boolean   @default(false)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  mentorshipSessions MentorshipSession[]
+  companyPrepSessions CompanyPrepSession[]
+
+  @@index([email])
+  @@index([company])
+  @@index([isVerified])
+}
+
+// Mentorship Session Model
+model MentorshipSession {
+  id            String    @id @default(cuid())
+  studentId     String
+  mentorId      String
+  title         String
+  description   String?
+  scheduledAt   DateTime
+  duration      Int
+  status        String    @default("scheduled")
+  feedback      String?
+  rating        Int?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  student       Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  mentor        Mentor    @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@index([mentorId])
+  @@index([status])
+}
+
+// Company Model
+model Company {
+  id            String    @id @default(cuid())
+  name          String    @unique
+  logo          String?
+  website       String?
+  description   String?
+  industry      String
+  location      String
+  recruiters    String[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  placements    Placement[]
+  marketData    MarketData[]
+  companyPrepResources CompanyPrepResource[]
+
+  @@index([name])
+  @@index([industry])
+}
+
+// Placement Model
+model Placement {
+  id            String    @id @default(cuid())
+  companyId     String
+  position      String
+  salary        Float
+  salaryType    String
+  salaryMin     Float?
+  salaryMax     Float?
+  ctc           Float?
+  benefits      String[]
+  location      String
+  eligibility   String?
+  description   String?
+  deadline      DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  company       Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+  applications  PlacementApplication[]
+
+  @@index([companyId])
+  @@index([position])
+  @@index([salary])
+}
+
+// Placement Application Model
+model PlacementApplication {
+  id            String    @id @default(cuid())
+  studentId     String
+  placementId   String
+  status        String    @default("applied")
+  appliedAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  student       Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  placement     Placement @relation(fields: [placementId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, placementId])
+  @@index([studentId])
+  @@index([placementId])
+  @@index([status])
+}
+
+// Market Analytics Model
+model MarketAnalytics {
+  id            String    @id @default(cuid())
+  studentId     String    @unique
+  averageSalary Float?
+  marketDemand  String?
+  skills        String[]
+  topCompanies  String[]
+  trends        String?
+  lastUpdated   DateTime  @default(now())
+
+  student       Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+}
+
+// Market Data Model
+model MarketData {
+  id            String    @id @default(cuid())
+  companyId     String
+  averageSalary Float
+  packageRange  String
+  placements    Int
+  year          Int
+  branch        String
+  createdAt     DateTime  @default(now())
+
+  company       Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@unique([companyId, year, branch])
+  @@index([companyId])
+  @@index([year])
+}
+
+// Company Prep Resource Model
+model CompanyPrepResource {
+  id            String    @id @default(cuid())
+  companyId     String
+  title         String
+  description   String?
+  resourceType  String
+  content       String?
+  fileUrl       String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  company       Company   @relation(fields: [companyId], references: [id], onDelete: Cascade)
+
+  @@index([companyId])
+  @@index([resourceType])
+}
+
+// Company Prep Session Model
+model CompanyPrepSession {
+  id            String    @id @default(cuid())
+  studentId     String
+  mentorId      String
+  company       String
+  topicCovered  String
+  difficulty    String
+  status        String    @default("scheduled")
+  notes         String?
+  feedback      String?
+  scheduledAt   DateTime
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  student       Student   @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  mentor        Mentor    @relation(fields: [mentorId], references: [id], onDelete: Cascade)
+
+  @@index([studentId])
+  @@index([mentorId])
+  @@index([company])
+  @@index([status])
+}
+
+// Question Model for Q&A Forum
+model Question {
+  id            String    @id @default(cuid())
+  title         String
+  company       String
+  text          String
+  isPaid        Boolean   @default(false)
+  cost          Int?
+  authorId      String
+  answer        String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  author        Student   @relation("QuestionAuthor", fields: [authorId], references: [id], onDelete: Cascade)
+  purchases     QuestionPurchase[]
+
+  @@index([authorId])
+  @@index([company])
+  @@index([isPaid])
+}
+
+// Question Purchase Transaction Model
+model QuestionPurchase {
+  id            String    @id @default(cuid())
+  questionId    String
+  buyerId       String
+  amount        Int
+  status        String    @default("completed")
+  createdAt     DateTime  @default(now())
+
+  question      Question  @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  buyer         Student   @relation("BuyerPurchases", fields: [buyerId], references: [id], onDelete: Cascade)
+
+  @@unique([questionId, buyerId])
+  @@index([questionId])
+  @@index([buyerId])
+}
+
+
+
