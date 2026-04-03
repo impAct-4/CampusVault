@@ -1,8 +1,10 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
-datasource db {`n  provider = "sqlite"`n}
+datasource db {
+  provider = "postgresql"
+}
 
 // Student Model
 model Student {
@@ -95,6 +97,7 @@ model Company {
   description   String?
   industry      String
   location      String
+  minGpa        Float?
   recruiters    String[]
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt

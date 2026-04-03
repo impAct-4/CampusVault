@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bebas+Neue&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -43,9 +45,189 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    font-family: 'Manrope', sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .nx-shell {
+    min-height: 100vh;
+    background-color: #e9edf3;
+    padding: 0.75rem;
+    background-image:
+      radial-gradient(circle at 16% 14%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 42%),
+      radial-gradient(circle at 82% 78%, rgba(16, 39, 77, 0.14), rgba(16, 39, 77, 0) 34%),
+      linear-gradient(125deg, #edf2f9 0%, #e8eef5 42%, #e5ebf3 100%);
+  }
+
+  @media (min-width: 768px) {
+    .nx-shell {
+      padding: 1.25rem;
+    }
+  }
+
+  .nx-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.66);
+    background-color: #f9fbff;
+    background-image:
+      radial-gradient(rgba(16, 38, 70, 0.12) 0.5px, transparent 0.5px),
+      linear-gradient(180deg, #ffffff 0%, #f5f9ff 44%, #f2f7fd 100%);
+    background-size: 3px 3px, 100% 100%;
+    box-shadow: 0 24px 55px rgba(10, 22, 40, 0.14);
+  }
+
+  .nx-frame::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 84% 12%, rgba(66, 153, 225, 0.18), rgba(66, 153, 225, 0) 34%),
+      radial-gradient(circle at 12% 86%, rgba(27, 181, 169, 0.16), rgba(27, 181, 169, 0) 30%);
+  }
+
+  .nx-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 1rem 0;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(12px);
+  }
+
+  @media (min-width: 768px) {
+    .nx-topbar {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  .nx-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #102646;
+  }
+
+  .nx-heading {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 0.03em;
+    font-weight: 500;
+    line-height: 0.92;
+    color: #0d203a;
+  }
+
+  .nx-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(13, 32, 58, 0.15);
+    background: linear-gradient(120deg, #0e2d54 0%, #163d70 56%, #0f3763 100%);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #ffffff;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    box-shadow: 0 12px 26px rgba(14, 45, 84, 0.28);
+  }
+
+  .nx-pill:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px rgba(14, 45, 84, 0.35);
+  }
+
+  .nx-pill-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(13, 32, 58, 0.16);
+    background: rgba(255, 255, 255, 0.85);
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #0f2a4d;
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  .nx-pill-light:hover {
+    background: #0f2a4d;
+    color: #ffffff;
+  }
+
+  .nx-card {
+    border-radius: 1rem;
+    border: 1px solid rgba(15, 42, 77, 0.15);
+    background: rgba(255, 255, 255, 0.86);
+    padding: 1.5rem;
+  }
+
+  .nx-gradient-text {
+    background: linear-gradient(122deg, #0b2447 0%, #1a4c85 38%, #1ea2ad 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .nx-glass {
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.68);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 15px 32px rgba(17, 40, 73, 0.14);
+  }
+
+  .nx-grid-lines {
+    background-image:
+      linear-gradient(rgba(17, 40, 73, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(17, 40, 73, 0.1) 1px, transparent 1px);
+    background-size: 36px 36px;
+    background-position: center;
+  }
+
+  .nx-reveal {
+    animation: nx-rise-in 520ms ease both;
+  }
+
+  .nx-reveal-delay-1 {
+    animation: nx-rise-in 680ms ease both;
+  }
+
+  .nx-reveal-delay-2 {
+    animation: nx-rise-in 820ms ease both;
+  }
+
+  .nx-hover-lift {
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+
+  .nx-hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 34px rgba(12, 31, 56, 0.18);
+  }
+}
+
+@keyframes nx-rise-in {
+  from {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
