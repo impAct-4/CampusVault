@@ -1,0 +1,46 @@
+# AI Strategy: Market Value Analyser
+
+## Model Selection: Open Source vs. Custom Training
+
+For a "Market Value Analyser," I recommend using a **Hybrid Approach with an Open Source Model** rather than training one from scratch.
+
+### Why Open Source?
+Training a high-quality LLM from scratch requires massive compute and a labeled dataset of millions of resumes/salaries. Instead, using a model like **Llama 3 (70B)** or **Mistral** and **fine-tuning** it or using **RAG (Retrieval-Augmented Generation)** is significantly more efficient.
+
+### The Strategy:
+1.  **Base Model:** Use Llama 3 via an API (like Groq or Together AI) for speed.
+2.  **Fine-Tuning:** Fine-tune the model on a curated dataset of anonymized placement data (CTC, Role, Tech Stack, GPA).
+3.  **RAG:** Use a vector database to store the latest market trends and "Glassdoor-style" salary data to provide real-time context to the model.
+
+---
+
+## The AI Prompt for Market Value Analysis
+
+Use this prompt template when calling your AI model to generate the valuation:
+
+**System Prompt:**
+> You are a Senior Career Valuation Expert specializing in the Indian and Global Tech Placement Market. Your goal is to analyze a candidate's profile (Resume, GitHub, LeetCode, LinkedIn, Certifications) and provide a realistic "Market Value" range (CTC in LPA). You must consider current industry demand for specific tech stacks, the quality of projects, and competitive programming proficiency.
+
+**User Prompt Template:**
+> Analyze the following candidate profile and provide a structured JSON response:
+> 
+> **Candidate Data:**
+> - **Resume Text:** [Extracted Text]
+> - **GitHub Stats:** [Repo Count, Top Languages, Contribution Frequency]
+> - **LeetCode Profile:** [Solved Count, Contest Rating]
+> - **LinkedIn/Certifications:** [List of verified certs and endorsements]
+> - **College/GPA:** [Branch, Year, CGPA]
+> 
+> **Required Output Format (JSON):**
+> {
+>   "estimated_ctc_range": {"min": float, "max": float, "currency": "INR_LPA"},
+>   "score_breakdown": {
+>     "resume_quality": int (0-100),
+>     "github_activity": int (0-100),
+>     "problem_solving": int (0-100),
+>     "certifications": int (0-100)
+>   },
+>   "top_strengths": [string],
+>   "critical_gaps": [string],
+>   "improvement_roadmap": [string]
+> }

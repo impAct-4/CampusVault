@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC ETHER | Main Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-primary": "#732ee4",
+                    "tertiary": "#adc6ff",
+                    "surface-container-high": "#29283a",
+                    "on-tertiary-fixed": "#001a42",
+                    "on-surface-variant": "#ccc3d8",
+                    "surface-container-highest": "#333345",
+                    "outline-variant": "#4a4455",
+                    "on-error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#5a00c6",
+                    "secondary-container": "#03b5d3",
+                    "tertiary-fixed-dim": "#adc6ff",
+                    "background": "#121222",
+                    "surface-dim": "#121222",
+                    "surface-container-low": "#1a1a2b",
+                    "tertiary-container": "#0062d2",
+                    "primary-fixed": "#eaddff",
+                    "primary-fixed-dim": "#d2bbff",
+                    "on-tertiary-fixed-variant": "#004395",
+                    "tertiary-fixed": "#d8e2ff",
+                    "error-container": "#93000a",
+                    "surface-container": "#1e1e2f",
+                    "on-primary": "#3f008e",
+                    "outline": "#958da1",
+                    "on-background": "#e3e0f8",
+                    "surface-container-lowest": "#0c0c1d",
+                    "surface": "#121222",
+                    "on-secondary-container": "#00424e",
+                    "on-secondary-fixed-variant": "#004e5c",
+                    "on-surface": "#e3e0f8",
+                    "on-secondary-fixed": "#001f26",
+                    "inverse-on-surface": "#2f2f40",
+                    "primary-container": "#7c3aed",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#333345",
+                    "primary": "#d2bbff",
+                    "on-primary-fixed": "#25005a",
+                    "on-secondary": "#003640",
+                    "on-error": "#690005",
+                    "inverse-surface": "#e3e0f8",
+                    "on-primary-container": "#ede0ff",
+                    "surface-tint": "#d2bbff",
+                    "on-tertiary": "#002e6a",
+                    "secondary-fixed": "#acedff",
+                    "secondary-fixed-dim": "#4cd7f6",
+                    "secondary": "#4cd7f6",
+                    "surface-bright": "#38374a",
+                    "on-tertiary-container": "#dce5ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Inter"],
+                    "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 100%);
+            color: #e3e0f8;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-image: linear-gradient(45deg, rgba(124, 58, 237, 0.05), rgba(3, 181, 211, 0.05));
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
+        }
+        .neon-glow-secondary {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 border-b border-white/10 bg-white/10 dark:bg-slate-900/40 backdrop-blur-md flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-white uppercase font-['Space_Grotesk']">KINETIC ETHER</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+<a class="text-violet-400 border-b-2 border-cyan-400 pb-1" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors transition-all duration-300" href="#">Prep</a>
+<a class="text-slate-400 hover:text-white transition-colors transition-all duration-300" href="#">Network</a>
+</nav>
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-4 text-slate-400">
+<span class="material-symbols-outlined cursor-pointer hover:text-violet-400 transition-colors" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-violet-400 transition-colors" data-icon="payments">payments</span>
+</div>
+<div class="h-10 w-10 rounded-full border border-violet-500/30 overflow-hidden">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" data-alt="Portrait of a focused young student with short dark hair in a professional studio setting with soft cyan ambient light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDo_3IBBpC_UPvzqkKoy5Vztl0SuSqTbhFemtoRFbE2_jhbb3trtjiF-YXoJR_I3xKbMAyhRla0b3bgDFjTbDr_L-Hw5kkXBc-zMJuVPgeEqeQgm0p_ue1YBzD9GFGiE4inBjOyLXqmaMhFbbm_Xj5OmE1pdMzAT4bnR4ORVwQFafyyvJE-_QmiXuz4dRIoa0CosIgRXR_odvU1tAaY4Z57dJEZOCPxkNJ7MndL4_WvLhhLDQhbC1_DYZ9q9UkbE377oMM2xitxYjq4"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 border-r border-white/10 bg-white/5 dark:bg-slate-950/50 backdrop-blur-xl flex flex-col py-8 gap-2 hidden lg:flex">
+<div class="px-6 mb-8">
+<h2 class="text-cyan-400 font-['Space_Grotesk'] text-lg font-bold tracking-tight">Placement Hub</h2>
+<p class="text-slate-500 text-xs uppercase tracking-widest font-['Space_Grotesk']">Mission Control</p>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-4 px-6 py-3 bg-violet-600/20 text-violet-400 border-r-4 border-violet-500 shadow-[0_0_15px_rgba(124,58,237,0.3)] transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Main Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Market Value</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Company Prep</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Senior Network</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Portfolio</span>
+</a>
+<a class="flex items-center gap-4 px-6 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="toll">toll</span>
+<span class="font-['Space_Grotesk'] text-sm font-medium">Credits</span>
+</a>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="lg:ml-64 pt-24 px-6 pb-12">
+<!-- Header Info Bar -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-10">
+<div>
+<span class="font-['Space_Grotesk'] text-cyan-400 text-xs font-bold uppercase tracking-[0.2em] mb-1 block">Student Identifier: #KE-9402</span>
+<h1 class="font-['Space_Grotesk'] text-4xl font-bold tracking-tighter text-white">SYSTEM STATUS: OPTIMIZED</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="glass-card px-4 py-2 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary" data-icon="stars" style="font-variation-settings: 'FILL' 1;">stars</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter font-headline">Credit Balance</p>
+<p class="text-white font-bold font-headline">1,250 <span class="text-secondary">CR</span></p>
+</div>
+</div>
+<div class="glass-card px-4 py-2 rounded-xl flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="verified">verified</span>
+<div>
+<p class="text-[10px] text-slate-500 uppercase tracking-tighter font-headline">Current Tier</p>
+<p class="text-white font-bold font-headline">ELITE PLATINUM</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Skill Radar Panel -->
+<div class="md:col-span-4 glass-card p-6 rounded-2xl flex flex-col items-center justify-center relative overflow-hidden group">
+<div class="absolute top-4 left-6">
+<h3 class="font-headline font-bold text-lg text-white">Skill Matrix</h3>
+<p class="text-slate-400 text-xs font-body italic">Real-time proficiency mapping</p>
+</div>
+<!-- Visual Placeholder for Radar Chart -->
+<div class="w-full aspect-square flex items-center justify-center mt-8">
+<div class="relative w-48 h-48 border border-white/10 rounded-full flex items-center justify-center">
+<div class="absolute inset-0 border-2 border-primary/20 rotate-45 scale-75"></div>
+<div class="absolute inset-0 border border-secondary/20 -rotate-12 scale-90"></div>
+<div class="w-32 h-32 bg-primary/20 backdrop-blur-sm clip-path-polygon-[50%_0%,_100%_38%,_82%_100%,_18%_100%,_0%_38%] animate-pulse"></div>
+<div class="absolute -top-4 text-[10px] text-cyan-400 font-headline uppercase font-bold">Algorithms</div>
+<div class="absolute -right-10 top-1/2 -translate-y-1/2 text-[10px] text-slate-400 font-headline uppercase">Soft Skills</div>
+<div class="absolute -bottom-4 text-[10px] text-slate-400 font-headline uppercase">System Design</div>
+<div class="absolute -left-10 top-1/2 -translate-y-1/2 text-[10px] text-violet-400 font-headline uppercase font-bold">Data Structures</div>
+</div>
+</div>
+<button class="mt-6 w-full py-2 bg-primary-container text-on-primary-container rounded-lg font-headline font-bold text-xs uppercase tracking-widest neon-glow-primary hover:scale-[1.02] transition-transform">Recalibrate Skills</button>
+</div>
+<!-- Eligibility Grid -->
+<div class="md:col-span-8 glass-card p-6 rounded-2xl">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline font-bold text-lg text-white">Eligible Streams</h3>
+<span class="text-xs text-secondary-container bg-secondary/10 px-3 py-1 rounded-full font-headline font-bold">14 NEW MATCHES</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Company Item -->
+<div class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm text-white">AeroDynamics X</h4>
+<p class="text-xs text-slate-400">Lead Cloud Architect</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-white bg-green-500/20 px-2 py-0.5 rounded border border-green-500/40">98% MATCH</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="database">database</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm text-white">DataNexus</h4>
+<p class="text-xs text-slate-400">ML Research Fellow</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-white bg-green-500/20 px-2 py-0.5 rounded border border-green-500/40">92% MATCH</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="security">security</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm text-white">CyberSentinel</h4>
+<p class="text-xs text-slate-400">Security Analyst</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-white bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/40">ELIGIBLE</span>
+</div>
+</div>
+<div class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-secondary/30 transition-all flex items-center gap-4 group">
+<div class="w-12 h-12 bg-slate-800 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" data-icon="memory">memory</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-sm text-white">NeuroSystems</h4>
+<p class="text-xs text-slate-400">Firmware Engineer</p>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-white bg-amber-500/20 px-2 py-0.5 rounded border border-amber-500/40">ELIGIBLE</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats Bar -->
+<div class="md:col-span-12 grid grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="glass-card p-4 rounded-2xl flex flex-col items-center">
+<p class="text-slate-500 text-[10px] uppercase tracking-widest font-headline mb-1">Batch Placement</p>
+<div class="text-3xl font-bold text-secondary font-headline">84.2%</div>
+<div class="w-full h-1 bg-white/5 mt-3 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[84%]"></div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-2xl flex flex-col items-center">
+<p class="text-slate-500 text-[10px] uppercase tracking-widest font-headline mb-1">Mean Package</p>
+<div class="text-3xl font-bold text-primary font-headline">18.5 <span class="text-sm">LPA</span></div>
+<div class="w-full h-1 bg-white/5 mt-3 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[65%]"></div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-2xl flex flex-col items-center">
+<p class="text-slate-500 text-[10px] uppercase tracking-widest font-headline mb-1">Drives Active</p>
+<div class="text-3xl font-bold text-white font-headline">12</div>
+<div class="w-full h-1 bg-white/5 mt-3 rounded-full overflow-hidden">
+<div class="h-full bg-white/40 w-[40%]"></div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-2xl flex flex-col items-center">
+<p class="text-slate-500 text-[10px] uppercase tracking-widest font-headline mb-1">Network Strength</p>
+<div class="text-3xl font-bold text-cyan-400 font-headline">940+</div>
+<div class="w-full h-1 bg-white/5 mt-3 rounded-full overflow-hidden">
+<div class="h-full bg-cyan-400 w-[94%]"></div>
+</div>
+</div>
+</div>
+<!-- Upcoming Drives -->
+<div class="md:col-span-8 space-y-6">
+<h3 class="font-headline font-bold text-xl text-white">Imminent Launch Events</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="h-32 w-full relative">
+<img alt="Tech Background" class="w-full h-full object-cover" data-alt="Abstract digital network visualization with glowing blue nodes and fiber optic light trails on a dark cosmic background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgyvNRiuJMRcixYwhNYIqGvbgblts7hZYUVp-PIVN1e1fAkCihfedSqb4TpT9PvuSBP9h2-J7acmYa78KTvZ6djjHcDtvMEMXkkPrgPH40RMZjUts76DhIW8TdwDNA6ub5dt8aI9We-ySaiOGN_7WD-rPNLdffBAUeiDqZYyikM5pivvKmmDX4VM4s7Qqim4Q4EqZupZk_3bIYgdKAU0iryIX-zDnjV5u7Cg3KHN6WfogTID0DseQP5nVeI5U8Re0yw7fkUpRF3mFE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-white p-1">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="Minimalist abstract tech company logo with geometric shapes in gradient blue" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYXmtfBUfzbZz--gL_tC9JFnkBgaYGeQ-Y_NRcgOKxjieP4G0EA235Xjl4aoS-Oa3-k3wuR5evWozuVzYY9YWN2AF5WQ2fRVv4ERh1aj5xF1u143DxScEiU1XwbCegNut5G_hC-v2ocWaYJRacUduTPpCzp_dVlQwlvPsitKyyasfOLeQf02a5ke6lCU3YAsXSGnATp-3F_LBaTN_LtCCZiOvvp8QER5-kWpRHqQsNTYbA_OKte9zBlRZ0u1IQ51aMShOviBXBhXdW"/>
+</div>
+<span class="font-headline font-bold text-white shadow-lg">TITAN LABS</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-xs text-slate-400 mb-1">Position</p>
+<p class="text-white font-bold font-headline">AI Integration Specialist</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-cyan-400 font-bold font-headline uppercase">Countdown</p>
+<p class="text-white font-bold font-headline">02:14:45</p>
+</div>
+</div>
+<button class="w-full py-2 border border-secondary text-secondary rounded-lg font-headline font-bold text-xs uppercase tracking-widest hover:bg-secondary/10 transition-all">Launch Application</button>
+</div>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden group">
+<div class="h-32 w-full relative">
+<img alt="Cyber Security" class="w-full h-full object-cover" data-alt="High tech security interface with digital shield icon and glowing binary code strings on a deep indigo background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApU3ofCB27qMCejCOOnx5nGzqYtPPnq2HIXP6rfvcXD5XnsxRZgSRy9QDd577iO-Fvs_TGTite4HrNgQ2A6ocuHDvn-53_9zMCT4uW3geJqeCfIaxVtLXdNXxk8iI7tANShlXPPhIdTrdNDoyGQI6BFD00U7kjdywmzCjYOzsstUsLK8CIVQd2BkyhEssWoyjfbGki4RQH8GAZdv9bWs2CFl5-sLi2MbzTs_3C24U1nzReS0c-SFusj4XTfVmlpNaCkYTrv0O65yyk"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background to-transparent"></div>
+<div class="absolute bottom-3 left-4 flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-white p-1">
+<img alt="Company Logo" class="w-full h-full object-contain" data-alt="Modern geometric emblem for a security firm in solid slate gray" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjnSOGg6u3ITK7ClE9lMlSy-dE9S7-j0a-Io79s29AonrSPmdBGi_5zKsbCY3lcjfXydCNiOTmhfx_TirQUBo1ALA8MvyAFvRgawQgrYf8qte6tXZG3NngpkBGMZYkgCCqZXrk0-iCF4LcWohheMcZxBUIaBOAR84vGYpvrXm4BS5lJbTgnDfl-Ie-3LJHtINqdyNyIYb7u3wCVQma1Fg1ihBofeoAKeNabpBqYsYZsZenT7vKtnvJuziX1XFmSI_qMbmi_hnbzsz-"/>
+</div>
+<span class="font-headline font-bold text-white shadow-lg">VOID SYSTEMS</span>
+</div>
+</div>
+<div class="p-5">
+<div class="flex justify-between items-end mb-4">
+<div>
+<p class="text-xs text-slate-400 mb-1">Position</p>
+<p class="text-white font-bold font-headline">Protocol Architect</p>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-cyan-400 font-bold font-headline uppercase">Countdown</p>
+<p class="text-white font-bold font-headline">14:05:12</p>
+</div>
+</div>
+<button class="w-full py-2 border border-secondary text-secondary rounded-lg font-headline font-bold text-xs uppercase tracking-widest hover:bg-secondary/10 transition-all">Launch Application</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Activity Feed -->
+<div class="md:col-span-4 glass-card p-6 rounded-2xl">
+<h3 class="font-headline font-bold text-lg text-white mb-6">Activity Logs</h3>
+<div class="space-y-6">
+<div class="flex gap-4 relative">
+<div class="absolute left-3 top-8 bottom-0 w-[1px] bg-white/10"></div>
+<div class="w-6 h-6 rounded-full bg-secondary-container flex items-center justify-center shrink-0 z-10 neon-glow-secondary">
+<span class="material-symbols-outlined text-[14px] text-on-secondary-container" data-icon="bolt" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<div>
+<p class="text-xs text-white font-medium">Earned 50 Credits</p>
+<p class="text-[10px] text-slate-500 font-headline uppercase mt-0.5">Mock Interview Completion</p>
+<p class="text-[10px] text-slate-600 mt-1">2 hours ago</p>
+</div>
+</div>
+<div class="flex gap-4 relative">
+<div class="absolute left-3 top-8 bottom-0 w-[1px] bg-white/10"></div>
+<div class="w-6 h-6 rounded-full bg-primary-container flex items-center justify-center shrink-0 z-10 neon-glow-primary">
+<span class="material-symbols-outlined text-[14px] text-on-primary-container" data-icon="task_alt">task_alt</span>
+</div>
+<div>
+<p class="text-xs text-white font-medium">Skill Badge: Python Pro</p>
+<p class="text-[10px] text-slate-500 font-headline uppercase mt-0.5">Unlocked via Assessment</p>
+<p class="text-[10px] text-slate-600 mt-1">Yesterday, 14:30</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center shrink-0 z-10">
+<span class="material-symbols-outlined text-[14px] text-slate-400" data-icon="history">history</span>
+</div>
+<div>
+<p class="text-xs text-white font-medium">Resume Exported</p>
+<p class="text-[10px] text-slate-500 font-headline uppercase mt-0.5">PDF Format - Build 4.2</p>
+<p class="text-[10px] text-slate-600 mt-1">Oct 24, 09:12</p>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 text-xs text-slate-400 font-headline font-bold uppercase tracking-widest hover:text-white transition-colors">View All Transmission Logs</button>
+</div>
+<!-- Quick Access Tiles -->
+<div class="md:col-span-12 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="terminal">terminal</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Code Sandbox</span>
+</a>
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="description">description</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Resume Engine</span>
+</a>
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-cyan-400 text-3xl" data-icon="video_chat">video_chat</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Mock Panels</span>
+</a>
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-amber-400 text-3xl" data-icon="school">school</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Learning Path</span>
+</a>
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-rose-400 text-3xl" data-icon="forum">forum</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Peer Collab</span>
+</a>
+<a class="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 group hover:translate-y-[-4px] transition-transform" href="#">
+<span class="material-symbols-outlined text-indigo-400 text-3xl" data-icon="settings">settings</span>
+<span class="text-[10px] font-headline font-bold text-white uppercase tracking-tighter">Core Config</span>
+</a>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 border-t border-white/5 bg-transparent flex flex-col md:flex-row justify-between items-center px-12 mt-16 font-['Inter'] text-xs uppercase tracking-widest text-slate-500">
+<div>© 2024 Kinetic Ether. All rights reserved.</div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+<a class="hover:text-white transition-colors" href="#">Support</a>
+<a class="hover:text-white transition-colors" href="#">Careers</a>
+</div>
+</footer>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-slate-900/80 backdrop-blur-xl border-t border-white/10 flex justify-around py-4 z-50">
+<a class="flex flex-col items-center text-violet-400" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="text-[8px] uppercase mt-1">Dash</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span class="text-[8px] uppercase mt-1">Jobs</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="text-[8px] uppercase mt-1">Value</span>
+</a>
+<a class="flex flex-col items-center text-slate-400" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="text-[8px] uppercase mt-1">Net</span>
+</a>
+</nav>
+</body></html>

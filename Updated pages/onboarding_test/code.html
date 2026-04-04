@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Onboarding Test | KINETIC ETHER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#732ee4",
+                        "tertiary": "#adc6ff",
+                        "surface-container-high": "#29283a",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-surface-variant": "#ccc3d8",
+                        "surface-container-highest": "#333345",
+                        "outline-variant": "#4a4455",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary-container": "#03b5d3",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "background": "#121222",
+                        "surface-dim": "#121222",
+                        "surface-container-low": "#1a1a2b",
+                        "tertiary-container": "#0062d2",
+                        "primary-fixed": "#eaddff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#d8e2ff",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e1e2f",
+                        "on-primary": "#3f008e",
+                        "outline": "#958da1",
+                        "on-background": "#e3e0f8",
+                        "surface-container-lowest": "#0c0c1d",
+                        "surface": "#121222",
+                        "on-secondary-container": "#00424e",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#e3e0f8",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#2f2f40",
+                        "primary-container": "#7c3aed",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#333345",
+                        "primary": "#d2bbff",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary": "#003640",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e3e0f8",
+                        "on-primary-container": "#ede0ff",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary": "#002e6a",
+                        "secondary-fixed": "#acedff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary": "#4cd7f6",
+                        "surface-bright": "#38374a",
+                        "on-tertiary-container": "#dce5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 100%);
+            min-height: 100vh;
+            color: #e3e0f8;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(45deg, rgba(124, 58, 237, 0.05), rgba(3, 181, 211, 0.05));
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        .neon-glow-secondary {
+            box-shadow: 0 0 20px rgba(76, 215, 246, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="flex flex-col">
+<!-- Top Progress Bar (Suppressing TopAppBar for Focus Mode) -->
+<header class="fixed top-0 left-0 w-full z-50 h-16 flex items-center px-8 bg-surface-container-lowest/50 backdrop-blur-md">
+<div class="flex items-center gap-4 w-full max-w-7xl mx-auto">
+<span class="font-headline font-bold text-lg tracking-tighter text-primary">KINETIC ETHER</span>
+<div class="flex-1 h-1.5 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/3 transition-all duration-500 neon-glow-secondary"></div>
+</div>
+<div class="text-xs font-label uppercase tracking-widest text-on-surface-variant">Question 04 <span class="text-outline">/ 12</span></div>
+</div>
+</header>
+<main class="flex-1 flex items-center justify-center pt-24 pb-12 px-6">
+<div class="w-full max-w-6xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left/Center: Question Module -->
+<div class="lg:col-span-8 flex flex-col gap-8">
+<div class="glass-panel p-10 rounded-xl">
+<div class="mb-8">
+<span class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary font-label text-[10px] uppercase tracking-widest mb-4">Domain: System Architecture</span>
+<h2 class="font-headline text-3xl font-medium leading-tight">Identify the primary bottleneck in a distributed ledger system when scaling horizontally across multi-region clusters.</h2>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- MCQ Options -->
+<button class="flex items-center gap-4 p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:translate-x-1 transition-all text-left group">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-label text-sm group-hover:bg-primary-container group-hover:text-white transition-colors">A</span>
+<span class="flex-1 text-on-surface-variant font-medium">Global consensus latency across high-availability zones</span>
+</button>
+<button class="flex items-center gap-4 p-6 rounded-xl border border-primary/40 bg-primary/10 hover:bg-primary/20 hover:translate-x-1 transition-all text-left group neon-glow-primary">
+<span class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center font-label text-sm">B</span>
+<span class="flex-1 text-white font-medium">Propagation delays within shard-specific p2p networks</span>
+</button>
+<button class="flex items-center gap-4 p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:translate-x-1 transition-all text-left group">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-label text-sm group-hover:bg-primary-container group-hover:text-white transition-colors">C</span>
+<span class="flex-1 text-on-surface-variant font-medium">Cryptographic overhead on validation nodes</span>
+</button>
+<button class="flex items-center gap-4 p-6 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:translate-x-1 transition-all text-left group">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-label text-sm group-hover:bg-primary-container group-hover:text-white transition-colors">D</span>
+<span class="flex-1 text-on-surface-variant font-medium">Database write-lock contention during periodic snapshots</span>
+</button>
+</div>
+<div class="mt-12 flex justify-between items-center">
+<button class="flex items-center gap-2 text-outline hover:text-white transition-colors font-label text-sm uppercase tracking-widest">
+<span class="material-symbols-outlined text-sm">chevron_left</span> Previous
+                        </button>
+<button class="px-8 py-3 rounded-lg bg-primary-container text-white font-label font-bold uppercase tracking-wider neon-glow-primary hover:scale-105 active:scale-95 transition-all">
+                            Submit &amp; Continue
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right: Timer & Info -->
+<div class="lg:col-span-4 sticky top-24 space-y-6">
+<!-- Timer Widget -->
+<div class="glass-panel p-8 rounded-xl flex flex-col items-center text-center">
+<div class="relative w-40 h-40 flex items-center justify-center mb-6">
+<!-- SVG Ring -->
+<svg class="absolute inset-0 w-full h-full -rotate-90">
+<circle class="text-surface-container-highest" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-secondary neon-glow-secondary" cx="80" cy="80" fill="transparent" r="70" stroke="currentColor" stroke-dasharray="440" stroke-dashoffset="110" stroke-width="6"></circle>
+</svg>
+<div class="flex flex-col">
+<span class="font-headline text-4xl font-bold text-white tracking-tighter">24:52</span>
+<span class="font-label text-[10px] uppercase tracking-widest text-outline">Remaining</span>
+</div>
+</div>
+<p class="text-on-surface-variant text-sm font-medium">Session auto-submits in 25 minutes. Do not refresh the browser window.</p>
+</div>
+<!-- Support Card -->
+<div class="glass-panel p-6 rounded-xl border-l-4 border-secondary/50">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary">help_outline</span>
+<h4 class="font-headline font-bold text-sm text-white">Need Assistance?</h4>
+</div>
+<p class="text-xs text-outline leading-relaxed">If you encounter technical issues during the placement evaluation, ping mission control immediately.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Overlay Results View (Hidden by default, shown here for structure) -->
+<!-- Note: Normally triggered via JS, rendering as a separate section below for the prompt -->
+<section class="mt-24 w-full max-w-7xl mx-auto px-6 pb-24">
+<div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-24"></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+<div class="lg:col-span-12 mb-8">
+<h2 class="font-headline text-5xl font-extrabold tracking-tighter uppercase text-white">Placement Analysis <span class="text-secondary">Complete</span></h2>
+<p class="font-body text-outline mt-2">Evaluation results generated based on current performance and industry standards.</p>
+</div>
+<!-- Result Score Card -->
+<div class="lg:col-span-5 glass-panel p-10 rounded-xl flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -top-12 -right-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+<div>
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary font-label text-xs uppercase tracking-widest mb-6">
+                        Category B: Needs Polish
+                    </div>
+<h3 class="font-headline text-7xl font-bold text-white mb-2">84<span class="text-2xl text-outline font-medium tracking-normal">/100</span></h3>
+<p class="text-on-surface-variant text-lg leading-relaxed">Your technical foundations are exceptional, but your system architecture scoring requires focused refinement for Tier-1 roles.</p>
+</div>
+<div class="mt-12 flex gap-4">
+<button class="flex-1 py-4 rounded-lg bg-white text-background font-label font-bold uppercase tracking-widest hover:bg-secondary transition-colors">Apply Strategy</button>
+<button class="flex-1 py-4 rounded-lg border border-white/20 font-label font-bold uppercase tracking-widest hover:bg-white/5 transition-colors">Full Report</button>
+</div>
+</div>
+<!-- Roadmap Card -->
+<div class="lg:col-span-7 glass-panel p-10 rounded-xl flex flex-col">
+<h4 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+                    Kinetic Roadmap
+                </h4>
+<div class="space-y-6 flex-1">
+<div class="flex gap-6 items-start relative pb-6 border-b border-white/5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-white/10">
+<span class="material-symbols-outlined text-primary" data-weight="fill">terminal</span>
+</div>
+<div>
+<h5 class="text-white font-bold text-lg">System Design Sprint</h5>
+<p class="text-outline text-sm">Focus on high-availability patterns and CAP theorem trade-offs. (Estimated 4 days)</p>
+</div>
+<div class="ml-auto text-secondary text-xs font-label">NEXT UP</div>
+</div>
+<div class="flex gap-6 items-start relative pb-6 border-b border-white/5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-white/10">
+<span class="material-symbols-outlined text-outline">psychology</span>
+</div>
+<div>
+<h5 class="text-white/50 font-bold text-lg">Behavioral Simulation</h5>
+<p class="text-outline/50 text-sm">Mock interview modules for leadership and culture-fit assessments.</p>
+</div>
+</div>
+<div class="flex gap-6 items-start relative">
+<div class="w-10 h-10 rounded-lg bg-surface-container-highest flex items-center justify-center shrink-0 border border-white/10">
+<span class="material-symbols-outlined text-outline">rocket_launch</span>
+</div>
+<div>
+<h5 class="text-white/50 font-bold text-lg">Tier-1 Networking</h5>
+<p class="text-outline/50 text-sm">Priority access to senior alumni at FAANG companies after Roadmap level 4.</p>
+</div>
+</div>
+</div>
+<div class="mt-8 p-4 rounded-lg bg-surface-container-lowest/50 border border-white/5 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="flex -space-x-2">
+<img class="w-8 h-8 rounded-full border-2 border-background object-cover" data-alt="close-up portrait of a young professional man with a confident expression in a tech office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA04td5ovWkilgUnpGObxCCuiSvTg9_0ARHPe24hx9LbLBwZTTLUCKMAwYf52ATnWEkJqsb6-xPjuggBeI7tWY4dgQTckThKPrJHc0eYiLvUCY8jG2Kua4-EjjNMouKDnuxlFev4u3wShNW21x687XZcxTSMfbPfkJULPmBph12T_klOGZZaP3xbeAy3mAGb4mNncHQ3vrkU6_sI2OqCqiHeu0PmXTkBJQ0qGc2YMk7una81ejnKVeqIjgAi2jUiA2kUzA378JgJdi8"/>
+<img class="w-8 h-8 rounded-full border-2 border-background object-cover" data-alt="professional woman in her late 20s with a modern hairstyle smiling warmly against a soft bokeh city background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT2n9gKpmlI8xdISW0Sw84sXi5JQy5qzLDros7UXzMXg5smO0ZBxEX1NJG6Z1fITt_MAeF3HdxxKUxr_O1qyKmGIcI-YARCqrQndOO-Rbscsa1or_zrht-xgXKIake8Pc-3AHHpV-mXVZg9aqoiFSS8pG-OyMk9OvhhWL9WaycU-AaAKeyc5yWse1wkOrHQ8nN5YoCTxmno--vB25cpWTgXQB33tXFPvY01LTNCbsZMuj95Fq0ufr2eKvfOunnktmIGuPCVETQAL-p"/>
+<img class="w-8 h-8 rounded-full border-2 border-background object-cover" data-alt="studio portrait of a middle-aged male executive with glasses looking thoughtful and professional" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxhzl9mPVEF6ecpq-JjLpbwZunkPCqkJvYvUoDqGWKaKHEzLnlTPR960gdqdUX_Tg2h0E9nDi21YXrfldQoYvo2-Gly6hjYMWfuOZXkK7qDLvChjXz9kMKG_V60NALPIhlT33Oxlyeskej6iYvttusMtZXSm1O1N4D3rlKHBC9mJ5JSGOCsHJsgJOBX3kkQV-kqO1dxHmGnvmdRDMbJ0pGArwtTi3pW7prV2KiAhs-gGMbLejMapYXq4LqE6JARx8PJFusxeGEasD1"/>
+</div>
+<span class="text-xs text-outline font-label uppercase tracking-tighter">428 peers followed this path</span>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<footer class="w-full py-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-12 mt-auto">
+<span class="font-['Inter'] text-xs uppercase tracking-widest text-slate-500">© 2024 KINETIC ETHER. ALL RIGHTS RESERVED.</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Terms</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-slate-600 hover:text-white transition-colors" href="#">Support</a>
+</div>
+</footer>
+</body></html>

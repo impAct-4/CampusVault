@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KINETIC ETHER — Register</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#732ee4",
+                        "tertiary": "#adc6ff",
+                        "surface-container-high": "#29283a",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-surface-variant": "#ccc3d8",
+                        "surface-container-highest": "#333345",
+                        "outline-variant": "#4a4455",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary-container": "#03b5d3",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "background": "#121222",
+                        "surface-dim": "#121222",
+                        "surface-container-low": "#1a1a2b",
+                        "tertiary-container": "#0062d2",
+                        "primary-fixed": "#eaddff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#d8e2ff",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e1e2f",
+                        "on-primary": "#3f008e",
+                        "outline": "#958da1",
+                        "on-background": "#e3e0f8",
+                        "surface-container-lowest": "#0c0c1d",
+                        "surface": "#121222",
+                        "on-secondary-container": "#00424e",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#e3e0f8",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#2f2f40",
+                        "primary-container": "#7c3aed",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#333345",
+                        "primary": "#d2bbff",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary": "#003640",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e3e0f8",
+                        "on-primary-container": "#ede0ff",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary": "#002e6a",
+                        "secondary-fixed": "#acedff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary": "#4cd7f6",
+                        "surface-bright": "#38374a",
+                        "on-tertiary-container": "#dce5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 100%);
+            min-height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            background-image: linear-gradient(45deg, rgba(124, 58, 237, 0.05), rgba(3, 181, 211, 0.05));
+        }
+        .neon-glow {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        .step-inactive { display: none; }
+        .step-active { display: block; }
+    </style>
+</head>
+<body class="font-body text-on-background selection:bg-primary-container selection:text-white overflow-x-hidden">
+<!-- Top Navigation Bar (JSON Anchor Mapping) -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-white/10 dark:bg-slate-900/40 backdrop-blur-md flex justify-between items-center px-6 h-16 w-full max-w-full font-['Space_Grotesk'] tracking-tight shadow-[0_0_20px_rgba(124,58,237,0.1)]">
+<div class="text-2xl font-bold tracking-tighter text-white uppercase">KINETIC ETHER</div>
+<div class="hidden md:flex gap-8">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Prep</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Network</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-slate-400 cursor-pointer" data-icon="notifications">notifications</span>
+<div class="w-8 h-8 rounded-full bg-surface-container-high border border-outline-variant overflow-hidden">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" data-alt="close-up portrait of a generic modern male student avatar in clean lighting with soft blue background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzj_oJTO1lu4hNBR5JS2KESDhXQbrGrd06opDmDi0tvHHs-o54DoFfd50ykgTnk1fheJ06fIw4FYOuN0HxQGIyB6hAXH_-g8MLlhQ9REYotgnS-G_NUv5syOE2_GjbhV7KR3PgHmoCoYGlK-1iQGF6UGF6CxzU8IzCLRe6pao1vtD3sCaHRTbL2VH8BvaGWZ2d01gVdv2GmrbrAfGvaVTw0isAg9kNQkjhwsMJRC8Y--cwb97Mvs_D3hbd7JrIhIGNM3ssQAQ_Masc"/>
+</div>
+</div>
+</nav>
+<main class="pt-32 pb-16 px-6 flex flex-col items-center justify-center min-h-screen">
+<!-- Asymmetric Decorative Background Elements -->
+<div class="absolute top-20 -left-20 w-96 h-96 bg-primary-container/10 rounded-full blur-[100px] pointer-events-none"></div>
+<div class="absolute bottom-20 -right-20 w-96 h-96 bg-secondary-container/10 rounded-full blur-[100px] pointer-events-none"></div>
+<!-- Registration Container -->
+<div class="w-full max-w-2xl z-10">
+<div class="mb-12 text-center">
+<h1 class="font-headline text-5xl font-bold tracking-tighter mb-4">INITIATE <span class="text-secondary">SEQUENCE</span></h1>
+<p class="text-slate-400 font-medium tracking-wide uppercase text-xs">Mission Control Student Registration</p>
+</div>
+<!-- Progress Bar -->
+<div class="mb-10 px-4">
+<div class="flex justify-between mb-3">
+<span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-primary">Deployment Phase</span>
+<span class="text-[10px] font-headline font-bold uppercase tracking-[0.2em] text-secondary">Step 1 of 4</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-lowest rounded-full overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary-container to-secondary-container w-1/4 rounded-full shadow-[0_0_10px_rgba(76,215,246,0.5)]"></div>
+</div>
+</div>
+<!-- Multi-Step Form Card -->
+<form action="#" class="glass-card rounded-2xl p-8 md:p-12 shadow-2xl" method="POST">
+<!-- STEP 1: Personal Profile -->
+<div class="step-active" id="step-1">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-primary-container/20 text-primary flex items-center justify-center text-sm">01</span>
+                        IDENTITY UPLOAD
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="col-span-full flex flex-col items-center mb-6">
+<div class="relative group cursor-pointer">
+<div class="w-24 h-24 rounded-2xl bg-surface-container-lowest border-2 border-dashed border-outline-variant flex items-center justify-center overflow-hidden group-hover:border-primary transition-colors">
+<span class="material-symbols-outlined text-slate-500 text-3xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-primary rounded-lg p-1.5 shadow-lg">
+<span class="material-symbols-outlined text-on-primary text-xs" data-icon="upload" data-weight="fill" style="font-variation-settings: 'FILL' 1;">upload</span>
+</div>
+</div>
+<span class="mt-3 text-[10px] font-headline uppercase text-slate-500">Avatar Module</span>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Full Name</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface placeholder:text-slate-600 font-body transition-all py-3 px-4 rounded-t-lg" placeholder="Commander Shepard" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Ether Mail</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface placeholder:text-slate-600 font-body transition-all py-3 px-4 rounded-t-lg" placeholder="shepard@kinetic.edu" type="email"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Signal Channel (Phone)</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface placeholder:text-slate-600 font-body transition-all py-3 px-4 rounded-t-lg" placeholder="+91 99999 00000" type="tel"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Encryption Key (Password)</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface placeholder:text-slate-600 font-body transition-all py-3 px-4 rounded-t-lg" placeholder="••••••••" type="password"/>
+</div>
+</div>
+<div class="mt-12 flex justify-end">
+<button class="group flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline font-bold tracking-tight hover:scale-105 active:scale-95 transition-all neon-glow" type="button">
+                            NEXT PROTOCOL
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 2: Academic Core (Hidden by Default) -->
+<div class="step-inactive" id="step-2">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-secondary-container/20 text-secondary flex items-center justify-center text-sm">02</span>
+                        ACADEMIC COORDINATES
+                    </h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Degree Course</label>
+<select class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface font-body transition-all py-3 px-4 rounded-t-lg">
+<option>BTech</option>
+<option>MTech</option>
+<option>MBA</option>
+</select>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Engineering Branch</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface font-body transition-all py-3 px-4 rounded-t-lg" placeholder="Computer Science" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Specialization</label>
+<input class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface font-body transition-all py-3 px-4 rounded-t-lg" placeholder="AI &amp; Machine Learning" type="text"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Current Cycle (Year)</label>
+<select class="bg-surface-container-lowest border-0 border-b border-outline-variant focus:border-secondary focus:ring-0 text-on-surface font-body transition-all py-3 px-4 rounded-t-lg">
+<option>1st Year</option>
+<option>2nd Year</option>
+<option>3rd Year</option>
+<option>4th Year</option>
+</select>
+</div>
+<div class="col-span-full flex flex-col gap-1.5">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 px-1">Performance Index (CGPA)</label>
+<input class="w-full accent-secondary mt-2" max="10" min="0" step="0.1" type="range"/>
+<div class="flex justify-between mt-1 text-[10px] font-headline text-slate-500">
+<span>0.0</span>
+<span class="text-secondary font-bold">8.5 / 10.0</span>
+<span>10.0</span>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-between">
+<button class="text-slate-500 hover:text-white transition-colors font-headline font-bold flex items-center gap-2" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            PREVIOUS
+                        </button>
+<button class="group flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline font-bold tracking-tight hover:scale-105 active:scale-95 transition-all neon-glow" type="button">
+                            NEXT PROTOCOL
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 3: Skill Array (Asymmetric Chips) -->
+<div class="step-inactive" id="step-3">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-primary-container/20 text-primary flex items-center justify-center text-sm">03</span>
+                        SKILL MATRIX
+                    </h2>
+<div class="space-y-8">
+<div>
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-4 block px-1">Programming Languages</label>
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-2 rounded-full border border-outline-variant bg-surface-container-highest/50 text-xs font-bold font-headline hover:border-secondary transition-all" type="button">Python</button>
+<button class="px-5 py-2 rounded-full border border-secondary bg-secondary/10 text-secondary text-xs font-bold font-headline shadow-[0_0_10px_rgba(76,215,246,0.2)]" type="button">Rust</button>
+<button class="px-5 py-2 rounded-full border border-outline-variant bg-surface-container-highest/50 text-xs font-bold font-headline" type="button">C++</button>
+<button class="px-5 py-2 rounded-full border border-outline-variant bg-surface-container-highest/50 text-xs font-bold font-headline" type="button">Go</button>
+<button class="px-5 py-2 rounded-full border border-secondary bg-secondary/10 text-secondary text-xs font-bold font-headline" type="button">TypeScript</button>
+<button class="px-5 py-2 rounded-full border border-outline-variant bg-surface-container-highest/50 text-xs font-bold font-headline" type="button">Java</button>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-4 block px-1">Core Architecture</label>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-white/5">
+<input checked="" class="rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-headline font-medium text-slate-300">DSA</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-white/5">
+<input class="rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-headline font-medium text-slate-300">DBMS</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-white/5">
+<input checked="" class="rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-headline font-medium text-slate-300">System Design</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-white/5">
+<input class="rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-headline font-medium text-slate-300">MLOps</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-surface-container-low rounded-lg border border-white/5">
+<input checked="" class="rounded border-outline-variant bg-background text-primary focus:ring-primary" type="checkbox"/>
+<span class="text-xs font-headline font-medium text-slate-300">Web3</span>
+</div>
+</div>
+</div>
+<div>
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-4 block px-1">Mission Roles</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center p-4 rounded-xl border border-outline-variant bg-surface-container-lowest cursor-pointer hover:border-primary transition-all group">
+<input class="mr-3 text-primary focus:ring-primary border-outline-variant" name="role" type="radio"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline group-hover:text-primary transition-colors">Backend Engineer</span>
+<span class="text-[10px] text-slate-500">Node, Rust, DBs</span>
+</div>
+</label>
+<label class="flex items-center p-4 rounded-xl border border-outline-variant bg-surface-container-lowest cursor-pointer hover:border-primary transition-all group">
+<input class="mr-3 text-primary focus:ring-primary border-outline-variant" name="role" type="radio"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline group-hover:text-primary transition-colors">ML Researcher</span>
+<span class="text-[10px] text-slate-500">PyTorch, CUDA</span>
+</div>
+</label>
+<label class="flex items-center p-4 rounded-xl border border-primary bg-primary/5 cursor-pointer transition-all group">
+<input checked="" class="mr-3 text-primary focus:ring-primary border-primary" name="role" type="radio"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline text-primary">Full-Stack Architect</span>
+<span class="text-[10px] text-primary/60">React, Next.js, Cloud</span>
+</div>
+</label>
+<label class="flex items-center p-4 rounded-xl border border-outline-variant bg-surface-container-lowest cursor-pointer hover:border-primary transition-all group">
+<input class="mr-3 text-primary focus:ring-primary border-outline-variant" name="role" type="radio"/>
+<div class="flex flex-col">
+<span class="text-xs font-bold font-headline group-hover:text-primary transition-colors">Cloud Ops</span>
+<span class="text-[10px] text-slate-500">AWS, Terraform</span>
+</div>
+</label>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-between">
+<button class="text-slate-500 hover:text-white transition-colors font-headline font-bold flex items-center gap-2" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            PREVIOUS
+                        </button>
+<button class="group flex items-center gap-3 bg-primary-container text-on-primary-container px-8 py-4 rounded-xl font-headline font-bold tracking-tight hover:scale-105 active:scale-95 transition-all neon-glow" type="button">
+                            NEXT PROTOCOL
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- STEP 4: Network & Archives -->
+<div class="step-inactive" id="step-4">
+<h2 class="font-headline text-2xl font-bold mb-8 flex items-center gap-3">
+<span class="w-8 h-8 rounded bg-secondary-container/20 text-secondary flex items-center justify-center text-sm">04</span>
+                        NETWORK SYNC
+                    </h2>
+<div class="space-y-6">
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border-l-4 border-secondary">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+<div class="flex-1">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 block">GitHub Repository</label>
+<input class="w-full bg-transparent border-0 focus:ring-0 text-sm py-1 placeholder:text-slate-700" placeholder="github.com/commander-shepard" type="url"/>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary" data-icon="badge">badge</span>
+<div class="flex-1">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 block">LinkedIn Profile</label>
+<input class="w-full bg-transparent border-0 focus:ring-0 text-sm py-1 placeholder:text-slate-700" placeholder="linkedin.com/in/shepard-galactic" type="url"/>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface-container-lowest p-4 rounded-xl border-l-4 border-tertiary">
+<span class="material-symbols-outlined text-tertiary" data-icon="code">code</span>
+<div class="flex-1">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 block">LeetCode Performance</label>
+<input class="w-full bg-transparent border-0 focus:ring-0 text-sm py-1 placeholder:text-slate-700" placeholder="leetcode.com/shepard" type="url"/>
+</div>
+</div>
+<div class="mt-8">
+<label class="text-[10px] font-headline font-bold uppercase tracking-widest text-slate-500 mb-4 block px-1">Resume Data Fragment (PDF)</label>
+<div class="border-2 border-dashed border-outline-variant rounded-2xl p-8 flex flex-col items-center justify-center bg-surface-container-lowest/50 hover:bg-surface-container-low hover:border-secondary transition-all cursor-pointer group">
+<span class="material-symbols-outlined text-slate-500 text-4xl mb-3 group-hover:text-secondary group-hover:scale-110 transition-all" data-icon="description">description</span>
+<p class="font-headline font-bold text-sm mb-1">UPLOAD PDF ARCHIVE</p>
+<p class="text-[10px] text-slate-500 uppercase tracking-widest">Max file size 5MB</p>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-between items-center">
+<button class="text-slate-500 hover:text-white transition-colors font-headline font-bold flex items-center gap-2" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            PREVIOUS
+                        </button>
+<button class="group relative px-12 py-4 bg-primary-container text-on-primary-container rounded-xl font-headline font-extrabold tracking-widest uppercase hover:scale-105 active:scale-95 transition-all neon-glow overflow-hidden" type="submit">
+<span class="relative z-10">INITIALIZE DEPLOYMENT</span>
+<div class="absolute inset-0 bg-gradient-to-r from-primary-container via-secondary-container to-primary-container opacity-0 group-hover:opacity-100 transition-opacity blur-xl"></div>
+</button>
+</div>
+</div>
+</form>
+<p class="mt-8 text-center text-slate-600 text-xs font-headline tracking-[0.2em] uppercase">
+                Secured by <span class="text-secondary">Ether Encryption Protocols</span> v4.2.0
+            </p>
+</div>
+</main>
+<!-- Footer (JSON Anchor Mapping) -->
+<footer class="w-full py-8 border-t border-white/5 bg-transparent flex flex-col md:flex-row justify-between items-center px-12 mt-auto font-['Inter'] text-xs uppercase tracking-widest text-slate-500">
+<div>© 2024 Kinetic Ether. All rights reserved.</div>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-white transition-colors" href="#">Privacy</a>
+<a class="hover:text-white transition-colors" href="#">Terms</a>
+<a class="hover:text-white transition-colors" href="#">Support</a>
+<a class="hover:text-white transition-colors" href="#">Careers</a>
+</div>
+</footer>
+</body></html>

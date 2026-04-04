@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Senior Network | KINETIC ETHER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#732ee4",
+                        "tertiary": "#adc6ff",
+                        "surface-container-high": "#29283a",
+                        "on-tertiary-fixed": "#001a42",
+                        "on-surface-variant": "#ccc3d8",
+                        "surface-container-highest": "#333345",
+                        "outline-variant": "#4a4455",
+                        "on-error-container": "#ffdad6",
+                        "on-primary-fixed-variant": "#5a00c6",
+                        "secondary-container": "#03b5d3",
+                        "tertiary-fixed-dim": "#adc6ff",
+                        "background": "#121222",
+                        "surface-dim": "#121222",
+                        "surface-container-low": "#1a1a2b",
+                        "tertiary-container": "#0062d2",
+                        "primary-fixed": "#eaddff",
+                        "primary-fixed-dim": "#d2bbff",
+                        "on-tertiary-fixed-variant": "#004395",
+                        "tertiary-fixed": "#d8e2ff",
+                        "error-container": "#93000a",
+                        "surface-container": "#1e1e2f",
+                        "on-primary": "#3f008e",
+                        "outline": "#958da1",
+                        "on-background": "#e3e0f8",
+                        "surface-container-lowest": "#0c0c1d",
+                        "surface": "#121222",
+                        "on-secondary-container": "#00424e",
+                        "on-secondary-fixed-variant": "#004e5c",
+                        "on-surface": "#e3e0f8",
+                        "on-secondary-fixed": "#001f26",
+                        "inverse-on-surface": "#2f2f40",
+                        "primary-container": "#7c3aed",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#333345",
+                        "primary": "#d2bbff",
+                        "on-primary-fixed": "#25005a",
+                        "on-secondary": "#003640",
+                        "on-error": "#690005",
+                        "inverse-surface": "#e3e0f8",
+                        "on-primary-container": "#ede0ff",
+                        "surface-tint": "#d2bbff",
+                        "on-tertiary": "#002e6a",
+                        "secondary-fixed": "#acedff",
+                        "secondary-fixed-dim": "#4cd7f6",
+                        "secondary": "#4cd7f6",
+                        "surface-bright": "#38374a",
+                        "on-tertiary-container": "#dce5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Space Grotesk"],
+                        "body": ["Inter"],
+                        "label": ["Space Grotesk"]
+                    }
+                },
+            }
+        }
+    </script>
+<style>
+        body {
+            background: linear-gradient(135deg, #0a0a1a 0%, #0d1b2a 100%);
+            color: #e3e0f8;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        .neon-text-cyan {
+            text-shadow: 0 0 8px rgba(76, 215, 246, 0.5);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 border-b border-white/10 bg-white/10 dark:bg-slate-900/40 backdrop-blur-md shadow-[0_0_20px_rgba(124,58,237,0.1)] flex justify-between items-center px-6 h-16 w-full max-w-full">
+<div class="flex items-center gap-4">
+<span class="text-2xl font-bold tracking-tighter text-white uppercase font-['Space_Grotesk']">KINETIC ETHER</span>
+</div>
+<div class="hidden md:flex items-center gap-8 font-['Space_Grotesk'] tracking-tight">
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Dashboard</a>
+<a class="text-slate-400 hover:text-white transition-colors" href="#">Prep</a>
+<a class="text-violet-400 border-b-2 border-cyan-400 pb-1" href="#">Network</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all scale-102 active:scale-98">notifications</button>
+<button class="material-symbols-outlined text-slate-400 hover:text-white transition-all scale-102 active:scale-98">payments</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-violet-500/30">
+<img alt="Student Profile Avatar" class="w-full h-full object-cover" data-alt="professional headshot of a young male student with a modern haircut against a neutral grey studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUPBO34ayo9GVN5p7yhKR_aD9CF3_1_csKYbBteox-pc3Z0Bkj5cStqnyxw8JjNDnjdKCddReLmCsPY9oeN-R_ZcK0H6KAf5UEgRB-yHbjA-zw5vwdHGNPZzsXN1reJDRnfdejhrvZYuqIyElRBoV17xv_DEUbpSIJxyl7cYHnYQz_mkE7gOOMcQgoidrOq1QW5ASOiN_MTJjzfL98skULfo_tB2-HhAR2tEFw1_vG8p5dyxGLCqyGCz-7uNp7CbtRSie0ni18H2gI"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-4rem)] w-64 border-r border-white/10 bg-white/5 dark:bg-slate-950/50 backdrop-blur-xl flex flex-col py-8 gap-2 z-40 hidden md:flex">
+<div class="px-6 mb-8">
+<h2 class="font-['Space_Grotesk'] text-cyan-400 text-lg font-bold tracking-tight">Placement Hub</h2>
+<p class="text-slate-500 text-xs uppercase tracking-widest font-['Inter']">Mission Control</p>
+</div>
+<nav class="flex flex-col gap-1 px-3">
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-all rounded-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span>Main Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-all rounded-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span>Market Value</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-all rounded-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="business_center">business_center</span>
+<span>Company Prep</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-violet-600/20 text-violet-400 border-r-4 border-violet-500 shadow-[0_0_15px_rgba(124,58,237,0.3)] rounded-l-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span>Senior Network</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-all rounded-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+<span>Portfolio</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:bg-white/5 hover:translate-x-1 transition-all rounded-lg font-['Space_Grotesk'] text-sm font-medium" href="#">
+<span class="material-symbols-outlined" data-icon="toll">toll</span>
+<span>Credits</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-64 pt-24 pb-12 px-6 lg:px-12">
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<span class="text-secondary font-['Space_Grotesk'] uppercase tracking-[0.2em] text-xs font-bold mb-2 block">The Intelligence Grid</span>
+<h1 class="text-5xl font-['Space_Grotesk'] font-bold tracking-tighter text-white mb-4">Senior Network</h1>
+<p class="text-slate-400 font-['Inter'] leading-relaxed">Connect with the graduates who secured the bag. Unlock exclusive interview insights, book 1-on-1 strategy sessions, and crowdsource answers to technical hurdles.</p>
+</div>
+<div class="flex gap-2 p-1 bg-surface-container-lowest rounded-xl border border-outline-variant/20">
+<button class="px-6 py-2 rounded-lg bg-primary-container text-on-primary-container font-['Space_Grotesk'] text-sm font-bold shadow-[0_0_15px_rgba(124,58,237,0.4)]">Q&amp;A Forum</button>
+<button class="px-6 py-2 rounded-lg text-slate-400 hover:text-white transition-colors font-['Space_Grotesk'] text-sm font-medium">Interviews</button>
+<button class="px-6 py-2 rounded-lg text-slate-400 hover:text-white transition-colors font-['Space_Grotesk'] text-sm font-medium">Mentorship</button>
+</div>
+</header>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Left Column: Q&A / Actions -->
+<div class="col-span-12 lg:col-span-8 flex flex-col gap-6">
+<!-- Search & Filter Shell -->
+<div class="glass-panel p-6 rounded-2xl flex items-center gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">search</span>
+<input class="w-full bg-surface-container-lowest border-none border-b-2 border-outline-variant/30 focus:border-secondary rounded-xl py-3 pl-12 text-sm transition-all focus:ring-0" placeholder="Search threads, companies, or mentors..." type="text"/>
+</div>
+<button class="flex items-center gap-2 bg-primary-container hover:bg-inverse-primary text-white px-6 py-3 rounded-xl font-['Space_Grotesk'] font-bold transition-all hover:scale-105">
+<span class="material-symbols-outlined">add</span>
+                        Post Question
+                    </button>
+</div>
+<!-- Q&A Threads -->
+<div class="flex flex-col gap-4">
+<!-- Thread Card 1 -->
+<div class="glass-panel rounded-2xl p-6 transition-all hover:translate-y-[-2px] group">
+<div class="flex gap-6">
+<div class="flex flex-col items-center gap-1 bg-surface-container-low rounded-xl px-3 py-4 border border-outline-variant/10">
+<button class="material-symbols-outlined text-primary hover:scale-125 transition-transform">keyboard_arrow_up</button>
+<span class="font-['Space_Grotesk'] font-bold text-lg">124</span>
+<button class="material-symbols-outlined text-slate-600 hover:scale-125 transition-transform">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-secondary/10 text-secondary text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded">System Design</span>
+<span class="text-slate-500 text-xs">• Posted 2 hours ago by @cipher_ninja</span>
+</div>
+<h3 class="text-xl font-['Space_Grotesk'] font-bold text-white mb-3 group-hover:text-primary transition-colors">How to approach the "Scalable Messaging" round at Google for Level 4?</h3>
+<p class="text-slate-400 text-sm line-clamp-2 font-['Inter'] mb-4">I've been preparing with Grokking but I'm unsure about how deep to go into Kafka partition logic versus high-level architectural trade-offs. Any seniors who cracked L4 recently?</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img alt="User" class="w-6 h-6 rounded-full border-2 border-background" data-alt="close up of a smiling man wearing glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZtB3zWouCAtxTpa8Dh6EpOnfVrXjz_oHQ-7l6nKQLFC72bwPv5_Cuh5kWGeOUl-6olSThVdHl14EqkJ83Ou9s4ObuXeb7v56av7ybBnYeDqSkZfsGrhSNsHQsE1zCTaEbvdEl9RZ7I0qCgvyKX7QVEjMUMhcw3a6Ht9Za69w276VdojvrGoCuY43K-JdGpg1PCt0rpG8QMTnS94tFTa_Imb62wZ3o2SVyMI92mJU47fnfty4d2rKyoXXqaOGmzzxf2upYTHM9-LcA"/>
+<img alt="User" class="w-6 h-6 rounded-full border-2 border-background" data-alt="portrait of a young woman with curly hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUzgbI54l6hrZOBTIpkf0izNGo4E_gD3nCXHZzWT_mxAYYwG1rpXihvEZ5NYagJIjCRSN1_8Plr_-G3n5c29-mtS1eeuQj3SX01FWi1eRh1kyElRDWlZR6QZVSD46F9rjs1i470Iyx7JEjPmqS1qeva_QdRJR15RhKYV656Soy76rRoXK_lVUlploTN4if450jJ1xujduf8swNN3jf2vUB52_pAY2kjJ7onCE1Abu7iCPZtKzkVer_WmMPTwm2tKz7bCvpbF_JvPM3"/>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border-2 border-background flex items-center justify-center text-[10px] text-white">+8</div>
+</div>
+<button class="text-sm font-['Space_Grotesk'] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                                        24 Answers
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Thread Card 2 -->
+<div class="glass-panel rounded-2xl p-6 transition-all hover:translate-y-[-2px] group">
+<div class="flex gap-6">
+<div class="flex flex-col items-center gap-1 bg-surface-container-low rounded-xl px-3 py-4 border border-outline-variant/10">
+<button class="material-symbols-outlined text-primary hover:scale-125 transition-transform">keyboard_arrow_up</button>
+<span class="font-['Space_Grotesk'] font-bold text-lg">89</span>
+<button class="material-symbols-outlined text-slate-600 hover:scale-125 transition-transform">keyboard_arrow_down</button>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-3 mb-2">
+<span class="bg-primary/10 text-primary text-[10px] uppercase font-bold tracking-widest px-2 py-1 rounded">Compensation</span>
+<span class="text-slate-500 text-xs">• Posted 5 hours ago by @equity_hunter</span>
+</div>
+<h3 class="text-xl font-['Space_Grotesk'] font-bold text-white mb-3 group-hover:text-primary transition-colors">Negotiation tips for Unicorn startups with ESOP components?</h3>
+<p class="text-slate-400 text-sm line-clamp-2 font-['Inter'] mb-4">Just received an offer from Zepto. The base is solid but I want to understand the vesting schedule and clawback clauses better. What should I ask the recruiter?</p>
+<div class="flex items-center justify-between">
+<div class="flex items-center -space-x-2">
+<img alt="User" class="w-6 h-6 rounded-full border-2 border-background" data-alt="professional man in a suit smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYw8DLmO7_PYJ00y_l7VlBBGeIDpFqDIzjcqNnupXu764BlFHp1V3DjS753gcPwA4vGDJV2ZhNUFHOL06B0an5--AlBOUxK4t39fi3PRloNXueIoIhGnHMGft0n8zCBRDo9rUpchsZevd09kbdvdB89DO_wYDU3Bvo4HGlGLcF1EDE_Gl_KdSKZG0XKY4UNoSeXlnsdrFLWju1a4bRZzKm0B79hgLS7ZZRfdjeq4wUYLL8dhHLS6WOW2KQ31bOwxFBWd3xoGDptjpT"/>
+<div class="w-6 h-6 rounded-full bg-surface-container-highest border-2 border-background flex items-center justify-center text-[10px] text-white">+3</div>
+</div>
+<button class="text-sm font-['Space_Grotesk'] font-bold text-secondary flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">chat_bubble</span>
+                                        12 Answers
+                                    </button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Mentorship & Interview Insights -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<!-- Mentorship Section -->
+<div class="glass-panel rounded-2xl p-6 border-l-4 border-secondary">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-['Space_Grotesk'] font-bold text-white uppercase tracking-tight">Active Mentors</h2>
+<span class="text-xs text-secondary font-bold">12 Online</span>
+</div>
+<div class="space-y-4">
+<!-- Mentor Card 1 -->
+<div class="p-4 bg-white/5 rounded-xl border border-outline-variant/10 hover:bg-white/10 transition-colors">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Mentor" class="w-12 h-12 rounded-xl object-cover" data-alt="close up headshot of a smiling man with a beard and stylish hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAYilngAsqAy_w1ngPVBrzV0woWtLc4BfS-0NsAse8b3eVJMKELF_fLWM3VRJQKXgXyrJlk1hmDXb03NX8W9Xoq87Z975U30mL5vH7eiWywjcHXB4RyLqwKfMWR_s_C_qS9A1oq9jNnm8flL8mGprdYSVSNUyE762a2jEzuiNLu2DZ7t_Vi0oltURCH6nAiOhVkBiKHID0ylQis-d0lWbd-fldHFvosxHbDyvdA78aZXlIRWidsJJQWMMwzMKm7hiXTKI_vzMZwH9M"/>
+<div>
+<h4 class="font-bold text-white text-sm">Aryan Sharma</h4>
+<p class="text-slate-500 text-xs">SDE-2 @ Microsoft • CS '22</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-surface-container-low p-2 rounded-lg text-center">
+<p class="text-[10px] text-slate-500 uppercase">Rate</p>
+<p class="text-xs font-bold text-primary">₹500 / slot</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg text-center">
+<p class="text-[10px] text-slate-500 uppercase">Rating</p>
+<p class="text-xs font-bold text-secondary">4.9/5</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 text-[10px] font-bold uppercase tracking-widest bg-secondary text-on-secondary-container rounded-lg transition-transform active:scale-95">Book Slot</button>
+<button class="material-symbols-outlined p-2 text-slate-400 bg-surface-container-highest rounded-lg">calendar_month</button>
+</div>
+</div>
+<!-- Mentor Card 2 -->
+<div class="p-4 bg-white/5 rounded-xl border border-outline-variant/10 hover:bg-white/10 transition-colors">
+<div class="flex items-center gap-4 mb-4">
+<img alt="Mentor" class="w-12 h-12 rounded-xl object-cover" data-alt="portrait of a confident woman looking at camera with professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnBuhPotfURgMqbDOSbpsQgPT4ea-u1l_S3Hv58NYI_Z6GEniwXC9cMGxGykMW939YN6pTa4XZ7NJin-pWY-xK-1giq_p2cdJEWhCBfG0PEn3gtHdSCJFHr5kZhSKUE6k1ARr6s8w1mUMS5FJPG-ukJ96Bgf6CCDWq1CszrT658RotJR6qnRxkZqv_IzVZM-4iHKfa5MwcjtKYoF7BTIKPqCuWZD4xDsbEqJ-jSDacIpmJY9fbNpC1yBWMU5p4l_Q7nLpEHS0tActF"/>
+<div>
+<h4 class="font-bold text-white text-sm">Priya Verma</h4>
+<p class="text-slate-500 text-xs">Quant Analyst @ Goldman • EE '21</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-2 mb-4">
+<div class="bg-surface-container-low p-2 rounded-lg text-center">
+<p class="text-[10px] text-slate-500 uppercase">Rate</p>
+<p class="text-xs font-bold text-primary">₹750 / slot</p>
+</div>
+<div class="bg-surface-container-low p-2 rounded-lg text-center">
+<p class="text-[10px] text-slate-500 uppercase">Rating</p>
+<p class="text-xs font-bold text-secondary">5.0/5</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex-1 py-2 text-[10px] font-bold uppercase tracking-widest bg-secondary text-on-secondary-container rounded-lg transition-transform active:scale-95">Book Slot</button>
+<button class="material-symbols-outlined p-2 text-slate-400 bg-surface-container-highest rounded-lg">calendar_month</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Interview Experience Premium Widget -->
+<div class="glass-panel rounded-2xl p-6 overflow-hidden relative group">
+<div class="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/10 opacity-50"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">workspace_premium</span>
+<h2 class="text-lg font-['Space_Grotesk'] font-bold text-white uppercase tracking-tight">Interview Logs</h2>
+</div>
+<div class="space-y-4">
+<!-- Premium Experience Card -->
+<div class="relative bg-surface-container-lowest/80 p-4 rounded-xl border border-white/5 group-hover:border-primary/30 transition-all">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-['Space_Grotesk'] text-slate-500">NVIDIA | HARDWARE ENG</span>
+<span class="text-[10px] font-bold text-primary">Class of 2023</span>
+</div>
+<h4 class="text-white font-bold text-sm mb-2">3 Rounds: Architecture, RTL, Behavioral</h4>
+<div class="relative">
+<p class="text-xs text-slate-500 leading-relaxed blur-[3px] select-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="bg-primary-container text-white px-4 py-2 rounded-full text-[10px] font-bold flex items-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-xs">lock</span>
+                                            Unlock for 20 Credits
+                                        </button>
+</div>
+</div>
+</div>
+<div class="relative bg-surface-container-lowest/80 p-4 rounded-xl border border-white/5">
+<div class="flex justify-between items-start mb-2">
+<span class="text-[10px] font-['Space_Grotesk'] text-slate-500">ZOMATO | PRODUCT MGR</span>
+<span class="text-[10px] font-bold text-primary">Class of 2022</span>
+</div>
+<h4 class="text-white font-bold text-sm mb-2">The Guesstimate Round Breakdown</h4>
+<div class="relative">
+<p class="text-xs text-slate-500 leading-relaxed blur-[3px] select-none">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="bg-primary-container text-white px-4 py-2 rounded-full text-[10px] font-bold flex items-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-xs">lock</span>
+                                            Unlock for 15 Credits
+                                        </button>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 py-3 rounded-xl border border-secondary/30 text-secondary font-['Space_Grotesk'] text-xs font-bold uppercase tracking-widest hover:bg-secondary/5 transition-colors">View All Logs</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 border-t border-white/5 bg-transparent flex flex-col md:flex-row justify-between items-center px-12 mt-auto">
+<div class="text-slate-500 font-['Inter'] text-xs uppercase tracking-widest">
+            © 2024 Kinetic Ether. All rights reserved.
+        </div>
+<div class="flex gap-8 mt-6 md:mt-0 font-['Inter'] text-xs uppercase tracking-widest">
+<a class="text-slate-600 hover:text-white transition-colors" href="#">Privacy</a>
+<a class="text-slate-600 hover:text-white transition-colors" href="#">Terms</a>
+<a class="text-slate-600 hover:text-white transition-colors" href="#">Support</a>
+<a class="text-slate-600 hover:text-white transition-colors" href="#">Careers</a>
+</div>
+</footer>
+<!-- FAB for Quick Actions (Suppressed on Details, but kept here for Network Hub Core) -->
+<button class="fixed bottom-8 right-8 w-14 h-14 bg-primary-container text-on-primary-container rounded-full shadow-[0_0_25px_rgba(124,58,237,0.5)] flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined">forum</span>
+</button>
+</body></html>
