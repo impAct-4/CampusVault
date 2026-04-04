@@ -1,0 +1,129 @@
+/* ── Side Navigation ─────────────────────────────────── */
+.side-nav {
+  position: fixed;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+
+  background: rgba(10, 26, 14, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  border-radius: 28px;
+  padding: 14px 8px;
+  box-shadow:
+    0 0 0 1px rgba(74, 222, 128, 0.06),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+
+  /* Slight curve on outside edges for the "arc" feel */
+  clip-path: none;
+  min-width: 48px;
+}
+
+.side-nav-brand {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(74, 222, 128, 0.12);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.side-nav-leaf {
+  color: #4ade80;
+}
+
+/* Divider between brand and items */
+.side-nav-brand::after {
+  content: none;
+}
+
+.side-nav-items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.side-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 14px;
+  padding: 10px;
+  color: rgba(230, 244, 235, 0.6);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  white-space: nowrap;
+  width: 44px;      /* collapsed */
+}
+
+.side-nav-item:hover,
+.side-nav-item.active {
+  background: rgba(74, 222, 128, 0.12);
+  color: #4ade80;
+  width: 140px;     /* expanded — label slides in */
+  padding-right: 16px;
+}
+
+.side-nav-item.active {
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  box-shadow: 0 0 14px rgba(74, 222, 128, 0.12);
+}
+
+.side-nav-icon {
+  flex-shrink: 0;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.side-nav-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0;
+  width: 0;
+  overflow: hidden;
+  transition: opacity 0.2s ease 0.05s, width 0.25s ease;
+  margin-left: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.side-nav-item:hover .side-nav-label,
+.side-nav-item.active .side-nav-label {
+  opacity: 1;
+  width: 80px;
+}
+
+/* Logout — pinned at bottom */
+.side-nav-logout {
+  margin-top: 8px;
+  border-top: 1px solid rgba(74, 222, 128, 0.1);
+  padding-top: 14px;
+  color: rgba(252, 165, 165, 0.7);
+}
+
+.side-nav-logout:hover {
+  background: rgba(252, 165, 165, 0.1) !important;
+  color: #fca5a5 !important;
+}
+
+/* Push page content to the right of the nav */
+.app-with-sidenav {
+  padding-left: 80px;
+}

@@ -1,179 +1,282 @@
 import { useNavigate } from 'react-router-dom';
-import { LogOut, TrendingUp, Users, Briefcase, User, BookOpen, Medal, ArrowUpRight, Rocket, Target } from 'lucide-react';
-import { signOut } from 'firebase/auth';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { auth } from '../config/firebase';
-import CompanyMatcher from './CompanyMatcher';
-import QuestionForum from './QuestionForum';
+import { TrendingUp, Briefcase, Medal, ChevronRight, Building2, BookOpen, Leaf } from 'lucide-react';
+import SideNav from './SideNav';
+import StreakCalendar from './StreakCalendar';
+import landingScrollVideo from '../assets/campusvault-landing-forest-scroll.mp4';
+import './DashboardPage.css';
+
+const API = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
 
 export default function DashboardPage() {
     const navigate = useNavigate();
+
     const [authToken, setAuthToken] = useState('');
-    const [currentUserId, setCurrentUserId] = useState('');
-    const [userName, setUserName] = useState('');
+    const [analytics, setAnalytics]   = useState(null);
+    const [stats, setStats]            = useState(null);
+    const [streak, setStreak]          = useState({ activities: [], currentStreak: 0, totalActiveDays: 0 });
+    const [recommendations, setRecs]   = useState(null);
+    const [loading, setLoading]        = useState(true);
 
+    // ── Auth & initial fetch ──────────────────────────────────
     useEffect(() => {
-        let mounted = true;
-
         const unsubscribe = auth.onAuthStateChanged(async (user) => {
-            if (!mounted) return;
-
-            if (!user) {
-                setAuthToken('');
-                setCurrentUserId('');
-                return;
-            }
-
+            if (!user) return;
             const token = await user.getIdToken();
-            if (mounted) {
-                setAuthToken(token);
-                setCurrentUserId(user.uid);
-                setUserName(user.email?.split('@')[0] || 'Student');
-            }
+            setAuthToken(token);
         });
-
-        return () => {
-            mounted = false;
-            unsubscribe();
-        };
+        return () => unsubscribe();
     }, []);
 
-    const handleLogout = async () => {
+    const fetchAll = useCallback(async (token) => {
+        if (!token) return;
         try {
-            await signOut(auth);
-            navigate('/login');
-        } catch (error) {
-            console.error('Failed to sign out:', error);
+            // Ping streak (log today)
+            await fetch(`${API}/dashboard/streak/ping`, {
+                method: 'POST',
+                headers: { Authorization: `Bearer ${token}` },
+            });
+
+            const [analyticsRes, statsRes, streakRes, recsRes] = await Promise.all([
+                fetch(`${API}/dashboard/analytics`, { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API}/dashboard/statistics`, { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API}/dashboard/streak`,     { headers: { Authorization: `Bearer ${token}` } }),
+                fetch(`${API}/dashboard/recommendations`, { headers: { Authorization: `Bearer ${token}` } }),
+            ]);
+
+            if (analyticsRes.ok) setAnalytics((await analyticsRes.json()).data);
+            if (statsRes.ok)     setStats((await statsRes.json()).data);
+            if (streakRes.ok)    setStreak((await streakRes.json()).data);
+            if (recsRes.ok)      setRecs((await recsRes.json()).data);
+        } catch (err) {
+            console.error('Dashboard fetch error:', err);
+        } finally {
+            setLoading(false);
         }
-    };
+    }, []);
 
-    const mainFeatures = [
-        {
-            icon: Briefcase,
-            title: 'Browse Placements',
-            description: 'Explore 100+ job opportunities',
-            action: () => navigate('/placements'),
-            badge: 'Opportunities',
-        },
-        {
-            icon: Users,
-            title: 'Expert Mentors',
-            description: 'Get guidance from industry leaders',
-            action: () => navigate('/mentors'),
-            badge: 'Mentorship',
-        },
-        {
-            icon: Medal,
-            title: 'Skill Assessment',
-            description: 'Test your technical skills',
-            action: () => navigate('/assessment'),
-            badge: 'Readiness',
-        },
-    ];
+    useEffect(() => {
+        if (authToken) fetchAll(authToken);
+    }, [authToken, fetchAll]);
 
-    const sideFeatures = [
-        {
-            icon: User,
-            title: 'My Profile',
-            description: 'View and edit your profile',
-            action: () => navigate('/profile'),
-        },
-        {
-            icon: TrendingUp,
-            title: 'Market Value',
-            description: 'Check market trends and salaries',
-            action: () => navigate('/market-value'),
-        },
-        {
-            icon: BookOpen,
-            title: 'Q&A Forum',
-            description: 'Ask questions and share insights',
-            action: () => window.scrollTo({ top: 1500, behavior: 'smooth' }),
-        },
-    ];
+    const student  = analytics?.student;
+    const skills   = analytics?.skills || [];
+    const enrolled = analytics?.enrollments || [];
 
-    return (
-        <div className="app-shell">
-            <div className="app-frame">
-                <nav className="app-nav">
-                    <div>
-                        <div className="app-brand">CAMPUSVAULT</div>
-                        <div className="muted" style={{ fontSize: 12 }}>Placement Command Center</div>
+    const havingSkills  = skills.filter(s => s.status === 'having');
+    const lackingSkills = skills.filter(s => s.status === 'lacking');
+
+    if (loading) {
+        return (
+            <div className="dash-shell">
+                <SideNav />
+                <main className="dash-main">
+                    <div className="dash-loading">
+                        <div className="loading-ring" />
+                        <p>Loading your dashboard…</p>
                     </div>
-                    <button onClick={handleLogout} className="btn btn-danger" type="button"><LogOut size={15} /> Logout</button>
-                </nav>
-
-                <main className="app-main">
-                    <section className="grid-2">
-                        <div className="panel fade-up">
-                            <p className="badge"><Rocket size={12} /> Active Preparation Window</p>
-                            <h1 className="hero-title" style={{ marginTop: 10 }}>READY, {userName?.toUpperCase()}?</h1>
-                            <p className="muted">Prioritize interviews, close skill gaps, and move from preparation to offers.</p>
-                            <div className="grid-3 compact-top">
-                                <div className="card"><strong>Weekly Focus</strong><div className="muted">Aptitude + DSA</div></div>
-                                <div className="card"><strong>Top Signal</strong><div className="muted">Mock Interview</div></div>
-                                <div className="card"><strong>Career Goal</strong><div className="muted">SDE Role</div></div>
-                            </div>
-                        </div>
-
-                        <div className="panel fade-delay">
-                            <h3 style={{ marginTop: 0 }}>Preparation Pulse</h3>
-                            <div className="stack">
-                                <div className="card"><strong>Momentum:</strong> Strong</div>
-                                <div className="card"><strong>Interview Readiness:</strong> Growing</div>
-                                <button onClick={() => navigate('/assessment')} className="btn btn-primary btn-block" type="button">Run Skill Check <ArrowUpRight size={15} /></button>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="compact-top">
-                        <h3 style={{ marginBottom: 12 }}>Priority Actions</h3>
-                        <div className="grid-3">
-                            {mainFeatures.map((feature) => {
-                                const Icon = feature.icon;
-                                return (
-                                    <button key={feature.title} onClick={feature.action} className="card" style={{ textAlign: 'left', cursor: 'pointer' }}>
-                                        <p className="badge">{feature.badge}</p>
-                                        <div style={{ marginTop: 10 }}><Icon size={20} /></div>
-                                        <h4 style={{ marginBottom: 4 }}>{feature.title}</h4>
-                                        <p className="muted" style={{ margin: 0 }}>{feature.description}</p>
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </section>
-
-                    <section className="compact-top">
-                        <h3 style={{ marginBottom: 12 }}>Quick Navigation</h3>
-                        <div className="grid-3">
-                            {sideFeatures.map((feature) => {
-                                const Icon = feature.icon;
-                                return (
-                                    <button key={feature.title} onClick={feature.action} className="card" style={{ textAlign: 'left', cursor: 'pointer' }}>
-                                        <div style={{ display: 'flex', gap: 10 }}>
-                                            <Icon size={18} />
-                                            <div>
-                                                <strong>{feature.title}</strong>
-                                                <p className="muted" style={{ margin: 0 }}>{feature.description}</p>
-                                            </div>
-                                        </div>
-                                    </button>
-                                );
-                            })}
-                        </div>
-                    </section>
-
-                    <section className="compact-top">
-                        <h3 style={{ display: 'flex', alignItems: 'center', gap: 8 }}><Target size={18} /> Eligible Companies for You</h3>
-                        <CompanyMatcher authToken={authToken} />
-                    </section>
-
-                    <section className="compact-top">
-                        <h3 style={{ display: 'flex', alignItems: 'center', gap: 8 }}><BookOpen size={18} /> Community Q&A Forum</h3>
-                        <QuestionForum authToken={authToken} currentUserId={currentUserId} />
-                    </section>
                 </main>
             </div>
+        );
+    }
+
+    return (
+        <div className="dash-shell">
+            <div className="dash-fixed-bg">
+                <video
+                    className="dash-bg-video"
+                    src={landingScrollVideo}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="auto"
+                    aria-label="Forest background"
+                />
+            </div>
+            <div className="dash-bg-overlay" />
+            <SideNav />
+
+            <main className="dash-main">
+                <div className="dash-topbar">
+                    <div className="dash-brand">
+                        <Leaf size={18} />
+                        <span>CAMPUSVAULT</span>
+                    </div>
+                    <div className="dash-topbar-tag">Student Command Center</div>
+                </div>
+
+                {/* ── Header ──────────────────────────────── */}
+                <header className="dash-header">
+                    <div>
+                        <h1 className="dash-greeting">
+                            Hey, {student?.firstName || 'Student'} 👋
+                        </h1>
+                        <p className="dash-subtitle">
+                            {student?.college} • {student?.branch} • CGPA {student?.cgpa?.toFixed(2)}
+                        </p>
+                    </div>
+                    <div className="dash-skill-badge">
+                        {analytics?.statistics?.skillCategory || 'Beginner'}
+                    </div>
+                </header>
+
+                {/* ── Grid layout ─────────────────────────── */}
+                <div className="dash-grid">
+
+                    {/* ── Activity Streak ───────────────────── */}
+                    <section className="dash-panel dash-panel--wide">
+                        <h2 className="panel-title">Activity Streak</h2>
+                        <StreakCalendar
+                            activities={streak.activities}
+                            currentStreak={streak.currentStreak}
+                            totalActiveDays={streak.totalActiveDays}
+                        />
+                    </section>
+
+                    {/* ── Placement Stats ─────────────────── */}
+                    <section className="dash-panel">
+                        <h2 className="panel-title">Applications</h2>
+                        <div className="stat-grid">
+                            {stats && Object.entries(stats.statusBreakdown).map(([key, val]) => (
+                                <div key={key} className="stat-box">
+                                    <span className="stat-val">{val}</span>
+                                    <span className="stat-key">{key}</span>
+                                </div>
+                            ))}
+                        </div>
+                        <button
+                            className="panel-cta"
+                            onClick={() => navigate('/placements')}
+                        >
+                            Browse Placements <ChevronRight size={14} />
+                        </button>
+                    </section>
+
+                    {/* ── Skills ──────────────────────────── */}
+                    <section className="dash-panel">
+                        <h2 className="panel-title">Skills</h2>
+                        {skills.length === 0 ? (
+                            <div className="empty-state">
+                                <Medal size={28} />
+                                <p>Take the assessment to map your skills</p>
+                                <button className="panel-cta" onClick={() => navigate('/assessment')}>
+                                    Run Assessment <ChevronRight size={14} />
+                                </button>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="skills-section">
+                                    <span className="skill-section-label having">✓ Having</span>
+                                    <div className="skill-chips">
+                                        {havingSkills.map(s => (
+                                            <div key={s.skillName} className="skill-chip having">
+                                                <span>{s.skillName}</span>
+                                                <span className="skill-level">{s.level}%</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="skills-section" style={{ marginTop: 12 }}>
+                                    <span className="skill-section-label lacking">✗ Lacking</span>
+                                    <div className="skill-chips">
+                                        {lackingSkills.map(s => (
+                                            <div key={s.skillName} className="skill-chip lacking">
+                                                <span>{s.skillName}</span>
+                                                <span className="skill-level">{s.level}%</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            </>
+                        )}
+                    </section>
+
+                    {/* ── Target Companies ────────────────── */}
+                    <section className="dash-panel">
+                        <h2 className="panel-title">
+                            <Building2 size={16} /> Eligible Companies
+                        </h2>
+                        {recommendations?.eligibleCompanies?.length > 0 ? (
+                            <div className="company-list">
+                                {recommendations.eligibleCompanies.map(c => (
+                                    <button
+                                        key={c.id}
+                                        className="company-row"
+                                        onClick={() => navigate(`/company/${c.id}`)}
+                                    >
+                                        <div>
+                                            <strong>{c.name}</strong>
+                                            <span className="company-industry">{c.industry}</span>
+                                        </div>
+                                        <span className="company-min-gpa">≥ {c.minGpa} CGPA</span>
+                                    </button>
+                                ))}
+                            </div>
+                        ) : (
+                            <div className="empty-state">
+                                <Briefcase size={28} />
+                                <p>No companies data yet</p>
+                            </div>
+                        )}
+                    </section>
+
+                    {/* ── Courses Enrolled ────────────────── */}
+                    <section className="dash-panel">
+                        <h2 className="panel-title">
+                            <BookOpen size={16} /> Courses Enrolled
+                        </h2>
+                        {enrolled.length === 0 ? (
+                            <div className="empty-state">
+                                <BookOpen size={28} />
+                                <p>No courses yet — coming soon!</p>
+                            </div>
+                        ) : (
+                            <div className="course-list">
+                                {enrolled.map(e => (
+                                    <div key={e.id} className="course-row">
+                                        <div>
+                                            <strong>{e.course.title}</strong>
+                                            <span className="course-cat">{e.course.category}</span>
+                                        </div>
+                                        <div className="course-progress-bar">
+                                            <div
+                                                className="course-progress-fill"
+                                                style={{ width: `${e.progress}%` }}
+                                            />
+                                        </div>
+                                        <span className="course-pct">{e.progress}%</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )}
+                    </section>
+
+                    {/* ── Quick Actions ───────────────────── */}
+                    <section className="dash-panel dash-panel--accent">
+                        <h2 className="panel-title">Quick Actions</h2>
+                        <div className="quick-actions">
+                            <button className="qa-btn" onClick={() => navigate('/assessment')}>
+                                <Medal size={20} />
+                                <span>Run Assessment</span>
+                            </button>
+                            <button className="qa-btn" onClick={() => navigate('/mentors')}>
+                                <TrendingUp size={20} />
+                                <span>Find Mentor</span>
+                            </button>
+                            <button className="qa-btn" onClick={() => navigate('/market-value')}>
+                                <TrendingUp size={20} />
+                                <span>Market Value</span>
+                            </button>
+                            <button className="qa-btn" onClick={() => navigate('/profile')}>
+                                <TrendingUp size={20} />
+                                <span>My Profile</span>
+                            </button>
+                        </div>
+                    </section>
+                </div>
+            </main>
         </div>
     );
 }

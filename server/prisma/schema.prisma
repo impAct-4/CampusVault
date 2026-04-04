@@ -23,6 +23,7 @@ model Student {
   skillCategory String?   @default("Beginner")
   creditBalance Int       @default(100)
   hasCompletedAssessment Boolean @default(false)
+  targetCompany String?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
@@ -32,6 +33,9 @@ model Student {
   companyPrepSessions CompanyPrepSession[]
   questions          Question[] @relation("QuestionAuthor")
   purchasedQuestions QuestionPurchase[] @relation("BuyerPurchases")
+  dailyActivities    DailyActivity[]
+  skills             StudentSkill[]
+  enrollments        Enrollment[]
 
   @@index([email])
   @@index([college])
@@ -268,5 +272,80 @@ model QuestionPurchase {
   @@index([buyerId])
 }
 
+// Daily Activity for GitHub-style streak tracking
+model DailyActivity {
+  id        String   @id @default(cuid())
+  studentId String
+  date      DateTime @db.Date
+  count     Int      @default(1)
 
+  student   Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
 
+  @@unique([studentId, date])
+  @@index([studentId])
+  @@index([date])
+}
+
+// Assessment Question (moved from hardcoded array)
+model AssessmentQuestion {
+  id            String   @id @default(cuid())
+  question      String
+  options       String[]
+  correctAnswer Int
+  category      String   @default("general")
+  difficulty    String   @default("medium")
+  createdAt     DateTime @default(now())
+}
+
+// Student Skill tracking (having vs lacking)
+model StudentSkill {
+  id        String  @id @default(cuid())
+  studentId String
+  skillName String
+  status    String  // "having" or "lacking"
+  level     Int     @default(0) // 0-100
+
+  student   Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, skillName])
+  @@index([studentId])
+}
+
+// Course model
+model Course {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  category    String
+  difficulty  String   @default("beginner")
+  duration    Int?     // in hours
+  instructor  String?
+  thumbnailUrl String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  enrollments Enrollment[]
+
+  @@index([category])
+  @@index([difficulty])
+}
+
+// Course Enrollment
+model Enrollment {
+  id          String   @id @default(cuid())
+  studentId   String
+  courseId    String
+  status      String   @default("enrolled") // enrolled, completed, dropped
+  progress    Int      @default(0)           // 0-100 percentage
+  enrolledAt  DateTime @default(now())
+  completedAt DateTime?
+
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  course      Course   @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([studentId, courseId])
+  @@index([studentId])
+  @@index([courseId])
+  @@index([status])
+}

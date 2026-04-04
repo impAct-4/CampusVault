@@ -115,8 +115,8 @@ export default function AssessmentPage() {
                                     <h2 style={{ margin: 0 }}>Question {currentQuestion + 1}/{assessmentQuestions.length}</h2>
                                     <span className="muted">{Math.round(((currentQuestion + 1) / assessmentQuestions.length) * 100)}%</span>
                                 </div>
-                                <div style={{ width: '100%', background: '#d8e7e2', borderRadius: 999, height: 8, marginTop: 8 }}>
-                                    <div style={{ width: `${((currentQuestion + 1) / assessmentQuestions.length) * 100}%`, background: 'var(--accent)', height: 8, borderRadius: 999 }} />
+                                <div style={{ width: '100%', background: 'rgba(255, 255, 255, 0.1)', borderRadius: 999, height: 8, marginTop: 12 }}>
+                                    <div style={{ width: `${((currentQuestion + 1) / assessmentQuestions.length) * 100}%`, background: '#4ade80', height: 8, borderRadius: 999, transition: 'width 0.3s ease' }} />
                                 </div>
                             </div>
 
@@ -127,10 +127,19 @@ export default function AssessmentPage() {
                                         key={idx}
                                         onClick={() => handleAnswer(idx)}
                                         className="btn btn-secondary"
-                                        style={{ borderRadius: 12, textAlign: 'left', background: answers[currentQuestion] === idx ? 'rgba(0,122,100,0.13)' : '#fff' }}
+                                        style={{ 
+                                            borderRadius: 12, 
+                                            textAlign: 'left', 
+                                            width: '100%',
+                                            padding: '16px',
+                                            justifyContent: 'flex-start',
+                                            background: answers[currentQuestion] === idx ? '#4ade80' : 'rgba(255,255,255,0.05)',
+                                            color: answers[currentQuestion] === idx ? '#000' : '#fff',
+                                            border: answers[currentQuestion] === idx ? '1px solid #4ade80' : '1px solid rgba(255, 255, 255, 0.1)',
+                                        }}
                                         type="button"
                                     >
-                                        <strong>{String.fromCharCode(65 + idx)}.</strong> {option}
+                                        <strong style={{ opacity: 0.7, marginRight: '12px' }}>{String.fromCharCode(65 + idx)}</strong> {option}
                                     </button>
                                 ))}
                             </div>
