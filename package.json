@@ -1,0 +1,25 @@
+{
+  "name": "placementos",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "npm run dev-client",
+    "dev-client": "npm run dev -w client",
+    "dev-server": "npm run dev -w server",
+    "build": "npm run build -w client && npm run build -w server",
+    "lint": "npm run lint -w client",
+    "start": "npm run start -w server",
+    "prisma:generate": "npm run prisma:generate -w server",
+    "prisma:migrate": "npm run prisma:migrate -w server",
+    "prisma:seed": "npm run prisma:seed -w server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "private": true,
+  "workspaces": [
+    "client",
+    "server"
+  ]
+}
